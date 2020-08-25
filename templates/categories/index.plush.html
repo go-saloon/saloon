@@ -1,0 +1,46 @@
+<% let ctx = {cat_title: category.Title, forum_title: forum.Title} %>
+<div class="row mt-3 justify-content-center">
+    <div class="col-md-8 col-sm-8">
+        <h2> <%=forum.Title + "  /  " + category.Title %></h2>
+    </div>
+    <%= if ( current_user) { %>
+    <div class="col-md-4 col-sm-4 text-right">
+        <a href="<%= topicCreatePath(ctx) %>" class="btn btn-primary btn-sm m-0"><i class="icon-pencil"></i> <%=  t("category-new-topic") %></a>
+    </div>
+    <% } %>
+</div>
+<div class="row">
+    <i class="icon user-shield" title="Edit"></i>
+    <div class="col-md-8"><%= t("category-topic") %></div>
+    <div class="col-md-2 text-center"><%= t("category-users") %></div>
+    <div class="col-md-1 text-center"><%= t("category-replies") %></div>
+    <div class="col-md-1 text-center"><%= t("category-activity") %></div>
+</div>
+
+<%= if (len(topics) == 0)  {%>
+    <h4><%= t("category-no-topics-found") %></h4>
+<% } %>
+<%= for (topic) in topics{
+ let ctxTopic= {cat_title: category.Title, forum_title: forum.Title, tid: topic.ID}%>
+<div class="row">
+    <%= if (!topic.Deleted) { %>
+    <hr class="col-md-12 col-sm-12" id="<%= topic.ID %>">
+    <div class="col-md-8">
+        <a href="<%= topicGetPath( ctxTopic ) %>" class="text-secondary">
+            <%= topic.Title %>
+        </a>
+    </div>
+    <div class="col-md-2 text-center">
+        <%= for (author) in topic.Authors() { %>
+        <span class="text-secondary">
+			<img src="data:image/png;base64,<%= author.Image() %>" alt="<%= displayName(derefUser(author)) %>" style="width:50px;border-radius:50%;">
+		</span>
+        <% } %>
+    </div>
+    <div class="col-md-1 text-center"><%= len(topic.Replies) %></div>
+    <div class="col-md-1 text-center"><%= timeSince(topic.LastUpdate())  %></div>
+    <% } %>
+</div>
+<% } %>
+
+<hr class="col-md-12 col-sm-12">

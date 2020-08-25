@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Foros ITBA</title>
+    <%= stylesheetTag("application.css") %>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token" content="<%= authenticity_token %>"/>
+    <link rel="icon"  href="<%= assetPath("images/logo-curso.png") %>">
+</head>
+<body>
+<div class="container">
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <%= if (len(forum.Logo)==0 || inForum) { %>
+                    <a class="navbar-brand" href="<%= forumPath({forum_title:forum.Title}) %>">
+                        <img src="data:image/png;base64,<%= forum.LogoImage() %>" class="img-circle" style="width: 50px;">
+                        <% } else { %>
+                        <a class="navbar-brand" href="<%= root_path %>">
+                        <i class="icon-home"></i>
+                        <% } %> </a>
+                </li>
+                <%= if (inForum) {
+                let ftitle = {forum_title:forum.Title}
+                let fpath = forumPath(ftitle)
+                %>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= fpath %>"><%= t("app-categories") %></a>
+                </li>
+
+                <% } %>
+                <%= if (current_user && current_user.Role == "admin") { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= user_settings_path %>"><%= t("app-users") %></a>
+                </li>
+                <% } %>
+            </ul>
+            <ul class="navbar-nav">
+                <%= if (current_user) { %>
+                <!-- <li class="nav-item" style="font-size: 30px">
+                     <a class="nav-link" href="<%= search_path %>">
+                         <i class="fa fa-search"></i>
+                     </a>
+                 </li> -->
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-light" data-toggle="dropdown">
+                           <!-- <img src="data:image/png;base64,<%= current_user.Image() %>"
+                                 alt="<%= current_user.Name %>" style="width:50px;" class="img-circle"> -->
+                            <%= if (current_user.Role == "admin") { %><i class="icon-shield"> <% } else { %> <i class="icon-user"><% }%>
+                            </i> <%= displayName(current_user) %>
+                            <i class="icon-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item nav-link" href="<%=user_settings_path%>"><i class="icon-cog"></i> <%=
+                                t("app-settings") %> </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item nav-link" href="<%= logoutPath() %>"
+                               data-method="DELETE"><i class="icon-signout"></i> <%=
+                                t("app-logout") %></a>
+                        </div>
+                    </div>
+                </li>
+
+                <% } else { %>
+                <li class="nav-item">
+                    <a href="<%= auth_path %>" class="nav-link"><%= t("app-login") %></a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+    <!-- End NavBar -->
+</div>
+<div class="container">
+    <%= partial("flash.html") %>
+    <%= yield %>
+</div>
+
+<%= javascriptTag("application.js") %>
+</body>
+</html>
+<!--
+<a class="navbar-brand" href="<%= root_path %>">
+    <= if (len(forum.Logo)==0) { >
+    <img src="<= assetPath(" images/logo-curso.png") >" style="width:50px;">
+    < } else { >
+    <img src="data:image/png;base64,<= forum.LogoImage() >" style="width:50px;">
+    < } >
+</a> -->

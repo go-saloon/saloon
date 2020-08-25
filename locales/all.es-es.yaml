@@ -1,0 +1,19 @@
+# For more information on using i18n see: https://github.com/nicksnyder/go-i18n
+# this shit dont work
+- id: welcome_greeting
+  translation: "Welcome to Buffalo (EN)"
+
+- id: app-categories
+  translation: "Categorías"
+- id: app-topics
+  translation: "Temas"
+- id: app-login
+  translation: "Iniciar sesión"
+- id: new-forum
+  translation: "Creación de nuevo foro"
+- id: category-category
+  translation: "Categoria"
+- id: category-topic
+  translation: "Topico de categoria"
+- id: category-activity
+  translation: "Ultima actividad"
