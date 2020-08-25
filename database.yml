@@ -9,9 +9,9 @@ development:
   port: 5432
 
 test:
-  url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/curso_test?sslmode=disable"}}
+  url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/saloon_test?sslmode=disable"}}
 #
 #production:
-#  url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/curso_production?sslmode=disable"}}
+#  url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/saloon?sslmode=disable"}}
 
 # docker run --name pyc-postgres -e POSTGRES_PASSWORD=1337 -p 5432:5432 -d postgres

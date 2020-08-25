@@ -1,5 +1,5 @@
-name = "curso"
-bin = "bin\\curso"
+name = "saloon"
+bin = "bin\\saloon"
 vcs = "git"
 with_pop = true
 with_sqlite = false
