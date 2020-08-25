@@ -5,7 +5,7 @@ import (
     "github.com/gobuffalo/packr/v2"
   "github.com/gobuffalo/buffalo/render"
     "github.com/gobuffalo/plush"
-    "github.com/soypat/curso/models"
+    "github.com/go-saloon/saloon/models"
     "html/template"
     "math"
     "strings"

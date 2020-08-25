@@ -2,8 +2,7 @@ package main
 
 import (
   "log"
-
-  "github.com/soypat/curso/actions"
+  "github.com/go-saloon/saloon/actions"
 )
 
 // main is the starting point for your Buffalo application.

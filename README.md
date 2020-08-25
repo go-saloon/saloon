@@ -1,13 +1,16 @@
-# curso: a saloon homage
+# Saloon (curso)
 A place to chat and communicate. Basically, a forum.
 ---
 This is a [Buffalo](https://gobuffalo.io/) application based heavily on the excellent
-but now derelict [go-saloon/saloon](https://github.com/go-saloon/saloon).
+but now derelict [go-saloon/saloon-legacy](https://github.com/go-saloon/saloon-legacy).
 
 It uses Postgres SQL database and OAuth2 using goth.
 
-Thanks to Sebastian Binet and the go-saloon authors for providing a sturdy foundation for this forum app.
+Thanks to go-saloon authors for providing a sturdy foundation for this forum app.
 
+The application name as built by buffalo is `curso` 
+as it was ported from [soypat/curso](https://github.com/soypat/curso).
+It should be modified to be `saloon` in the future.
 ## Looks
 
 ### Homepage

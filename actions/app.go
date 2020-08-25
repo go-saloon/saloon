@@ -8,7 +8,7 @@ import (
 	"github.com/markbates/goth/gothic"
 	"github.com/unrolled/secure"
 
-	"github.com/soypat/curso/models"
+	"github.com/go-saloon/saloon/models"
 	"github.com/gobuffalo/buffalo-pop/v2/pop/popmw"
 	csrf "github.com/gobuffalo/mw-csrf"
 	i18n "github.com/gobuffalo/mw-i18n"
@@ -40,7 +40,7 @@ func App() *buffalo.App {
 	if app == nil {
 		app = buffalo.New(buffalo.Options{
 			Env:         ENV,
-			SessionName: "_curso_session",
+			SessionName: "_saloon_session",
 		})
 
 		// Automatically redirect to SSL

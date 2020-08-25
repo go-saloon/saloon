@@ -1,4 +1,4 @@
-module github.com/soypat/curso
+module github.com/go-saloon/saloon
 
 go 1.14
 
