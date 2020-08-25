@@ -1,0 +1,46 @@
+<% let ctx = {forum_title:forum.Title, cat_title:category.Title,tid:topic.ID, rid: reply.ID} %>
+<hr class="col-md-10 ml-2" id="<%= reply.ID %>">
+
+<div class="row">
+    <div class="col-md-8 offset-md-1">
+        <%= markdown(reply.Content) %>
+    </div>
+    <div class="col-md-2 offset-md-8 text-right">
+        <%= if  ( current_user.IsAuthor(reply.AuthorID) || current_user.Role == "admin" ) { %>
+        <button type="button" class="btn btn-danger btn-sm m-0" data-toggle="modal" data-target="#reply-modal-<%= reply.ID %>">
+            <i class="icon-trash"> </i>
+        </button>
+        <a href="<%= replyEditPath(ctx) %>" class="btn btn-secondary btn-sm m-0">
+            <i class="icon-edit"> </i>
+        </a>
+        <% } %>
+    </div>
+    <div class="row" style="font-size: 10pt">
+        <a class="col-md-2" > <%= displayName(reply.Author) %></a>
+        <div class="col-md-5"></div>
+        <div class="col-md-2 text-right"><%= timeSince(reply.UpdatedAt) %> </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reply-modal-<%= reply.ID %>">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><%= t("reply-delete-msg") %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal  -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col text-left">
+                        <a href="<%= replyEditPath(ctx) %>" class="btn btn-danger" data-method="DELETE"><%= t("reply-delete") %></a>
+                    </div>
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("reply-cancel") %></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

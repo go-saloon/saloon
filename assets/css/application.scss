@@ -1,0 +1,9 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@import "buffalo";
+
+.img-circle {
+	border-radius: 50%;
+	width: 50px;
+}

@@ -1,0 +1,33 @@
+<div class="row">
+    <h1><%= forum.Title %></h1>
+    <div class="col-md-2 offset-md-10 text-right">
+
+        <%= if (current_user.Role == "admin") { %>
+        <a href="<%= catCreatePath({forum_title:forum.Title}) %>" class="btn btn-primary"><%= t("category-new-category") %></a>
+        <% } %>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8"><%= t("category-category") %></div>
+    <div class="col-md-2 text-center"><%= t("category-topic") %></div>
+    <div class="col-md-2 text-center"><%= t("category-activity") %></div>
+</div>
+
+<%= for (c) in categories { %>
+<div class="row">
+    <hr class="col-md-12">
+    <div class="col-md-8">
+        <a href="<%= joinPath(current_path,"c", c.Title) %>"><h2><%= c.Title %></h2></a>
+        <p><%= if (c.Description.Valid) { markdown(truncate(c.Description.String, {"size": 200})) } %></p>
+    </div>
+</div>
+<% } %>
+
+<hr class="col">
+
+<div class="row">
+    <div class="col">
+        <%= paginator(pagination) %>
+    </div>
+</div>
