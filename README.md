@@ -8,9 +8,7 @@ It uses Postgres SQL database and OAuth2 using goth.
 
 Thanks to go-saloon authors for providing a sturdy foundation for this forum app.
 
-The application name as built by buffalo is `curso` 
-as it was ported from [soypat/curso](https://github.com/soypat/curso).
-It should be modified to be `saloon` in the future.
+The application was ported from [soypat/curso](https://github.com/soypat/curso).
 ## Looks
 
 ### Homepage
@@ -24,7 +22,7 @@ It should be modified to be `saloon` in the future.
 
 ## How to run application
 
-One needs a database to run `curso`.
+One needs a database to run `saloon`.
 Here is an example, running postgres inside a docker container:
 
 ```
@@ -57,7 +55,7 @@ If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you 
 ## how i did this
 Don't bother reading this. These are notes for myself if I ever try building a new buffalo app in the future.
 
-`buffalo new curso` then `cd curso`
+`buffalo new saloon` then `cd saloon`
 
 
 `buffalo pop g model user name nick provider provider_id email role subscriptions`
