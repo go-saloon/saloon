@@ -127,7 +127,7 @@ func SetCurrentUser(next buffalo.Handler) buffalo.Handler {
 			err := tx.Find(u, uid)
 			if err != nil {
 				c.Logger().Error("error in setCurrent user while looking for uuid in tx")
-				return errors.WithStack(err)
+				return next(c)
 			}
 			c.Set("current_user", u)
 		}

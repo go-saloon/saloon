@@ -38,7 +38,7 @@ func TopicCreatePost(c buffalo.Context) error {
 	q  := tx.Where("title = ?", c.Param("cat_title"))
 	err := q.First(cat)
 	if err != nil {
-		c.Flash().Add("dange+r","Error while seeking category")
+		c.Flash().Add("danger","Error while seeking category")
 		return c.Redirect(302,"forumPath()")
 	}
 	topic.Category = cat
